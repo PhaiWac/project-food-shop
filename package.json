@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "child_process": "^1.0.2",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "env": "^0.0.2",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "install": "^0.13.0",
+    "jquery": "^3.7.1",
+    "method-override": "^3.0.0",
+    "mongodb": "^6.2.0",
+    "mongoose": "^8.0.0",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "daisyui": "^4.4.20",
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.3.6"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "tailwind": "node build-tailwind.js "
+  },
+  "name": "shoe-project-end",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

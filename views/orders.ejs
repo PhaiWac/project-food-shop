@@ -1,0 +1,41 @@
+<section>
+    <div class="w-5/6 mx-auto md:w-4/5">
+        <% orders.forEach(function(v) { %>
+            <div class="collapse mb-3 bg-gray-200 collapse-arrow bg-base-200">
+                <input type="radio" name = 'accordion' />
+                <div class="collapse-title text-xl font-medium">คำสั่งซื้อของ <%= v.email %></div>
+                <div class="collapse-content text-center md:text-start">
+                    <p class="mb-3 text-xl">เมนู</p>
+                    <p class="font-light m-3"><%= v.name %></p>
+                    <p class="mb-3 text-xl">ราคา</p>
+                    <p class="font-light m-3"><%= v.price %></p>
+                    <p class="mb-3 text-xl">ที่อยู่</p>
+                    <p class="font-light m-3"><%= v.address %></p>
+                    <p class="mb-3 text-xl">เบอร์ติดต่อ</p>
+                    <p class="font-light m-3"><%= v.phone %></p>
+                    <p class="mb-3 text-xl">ปรับสถานะ</p>
+                    <form action="/api/orderstuts/<%=v._id%>" method = "POST">
+                        <% if (v.stuts == "pedding") { %>
+                            <button class="btn btn-primary">
+                                กำลังทำอาหาร 
+                            </button>
+                        <% } else { %>
+                            <button class="btn btn-success text-white">
+                                ส่งอาหารเรียบร้อยแล้ว
+                            </button>
+                        <% } %>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+        <!-- <div class="collapse collapse-arrow bg-base-200">
+            <input type="radio" name='accordion'/>
+            <div class="collapse-title text-xl font-medium">
+                Click to open this one and close others
+            </div>
+            <div class="collapse-content">
+                <p>hello</p>
+            </div>
+        </div> -->
+    </div>
+</section>

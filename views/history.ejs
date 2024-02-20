@@ -1,0 +1,44 @@
+<div class="w-5/6 mx-auto md:w-4/5">
+    <div class="overflow-x-auto">
+        <table class="table table-md border-2">
+            <thead>
+                <tr>
+                    <th>ชื่อเมนู</th>
+                    <th>ราคา</th>
+                    <th>จำนวน</th>
+                    <th>รวม</th>
+                    <th>สถานะ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% order.forEach(function(v) { %>
+                    <tr>
+                        <td>
+                            <%=v.name%>
+                        </td>
+                        <td>
+                            <%=v.price%>
+                        </td>
+                        <td>
+                            <%=v.count%>
+                        </td>
+                        <td>
+                            <%=v.pay%>
+                        </td>
+                        <td>
+                            <% if ( v.stuts == 'doing')  { %>
+                                <p>กำลังทำอาหาร</p>
+                            <% } else if (v.stuts == "success") { %>
+                                <p>ส่งอาหารสำเร็จแล้ว</p>
+                            <% } else {%>
+                                <p>รอการยืนยัน</p>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

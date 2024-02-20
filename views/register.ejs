@@ -1,0 +1,43 @@
+<div class="w-5/6 mx-auto  shadow-md rounded-md md:w-3/6" data-theme = 'light'>
+    <div class="flex w-full  justify-between">
+        <div class="right bg-gray-50 w-full p-5 md:w-5/6">
+            <h2 class="text-center text-2xl mb-3 font-bold md:text-start">Reigster</h2>
+            <form action="/api/register" method="POST" >
+                <div class="w-full mb-3">
+                    <div class="label"><span class="label-text">Email</span></div>
+                    <input type="email" name = 'email' placeholder="Email" class="input input-md input-bordered w-full " />
+                </div>
+                <div class="w-full mb-3">
+                    <div class="label"><span class="label-text">Password</span></div>
+                    <input type="password" name = 'password' placeholder="Password" class="input input-md input-bordered w-full " />
+                </div>
+                <div class="w-full mb-3">
+                    <div class="label"><span class="label-text">Confirm password</span></div>
+                    <input type="password" name = 'confirmpassword' placeholder="Password2" class="input input-md input-bordered w-full " />
+                </div>
+                <div class="w-full mb-3">
+                    <div class="label"><span class="label-text">Phone</span></div>
+                    <input type="number" name = 'phone' placeholder="number" class="input input-md input-bordered w-full " />
+                </div>
+                <div class="w-full mb-3">
+                    <div class="label"><span class="label-text">Address</span></div>
+                    <textarea name="address" id="" rows="2" class="textarea w-full  textarea-bordered"></textarea>
+                </div>
+                <div class="w-full mb-3 ">
+                    <button type="submit" class="btn btn-primary w-full text-black md:w-auto hover:text-white">Sing up</button>
+                    <a href="/" class="btn btn-ghost w-full mt-3 md:mt-0 md:w-auto hover:text-white">Sing in</a>
+                </div>
+
+            </form>
+        </div>
+        <div class="left hidden w-3/6 md:block">
+            <div class="bg-gray-800 w-full h-full relative">
+                <img src="/img/foodbg.png" class="z-0 w-full h-full object-cover opacity-75 blur-sm">
+                <div class="flex-column p-5 z-1 absolute top-0 left-0 h-full justify-center items-center text-white">
+                    <h1 class="font-bold text-2xl">ร้านอาหารที่อร่อย ?</h1>
+                    <p class="text-gray-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, amet illum. Corrupti dolorum veritatis facilis ex officia vitae esse odit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

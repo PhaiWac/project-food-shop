@@ -1,0 +1,58 @@
+<div class="w-5/6 mx-auto md:w-4/5">
+    <div class="overflow-x-auto">
+        <table class="table table-md border-2">
+            <thead>
+                <tr>
+                    <th>ชื่อเมนู</th>
+                    <th>ราคา</th>
+                    <th>จำนวน</th>
+                    <th>รวม</th>
+                    <th>ยกเลิก</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% order.forEach(function(v) { %>
+                    <tr>
+                        <td>
+                            <%=v.name%>
+                        </td>
+                        <td>
+                            <%=v.price%>
+                        </td>
+                        <td>
+                            <%=v.count%>
+                        </td>
+                        <td>
+                            <%=v.pay%>
+                        </td>
+                        <td>
+                            <label for="#item<%=v._id%>" class="btn btn-primary">ยกเลิกรายการ</label>
+
+                            <input type="checkbox" id="#item<%= v._id %>" class="modal-toggle" />
+                            <div class="modal" >
+                                <div class="modal-box">
+                                    <h1 class="font-bold text-lg">คุณแน่ใจแน่นะ ?</h1>
+                                    <form action="/api/cancelorder/<%=v._id%>" method="POST">
+                                        <button  class="btn text-white btn-error w-full mt-5">ยืนยันการลบ</button>
+                                    </form>
+                                    <div class="modal-action">
+                                        <label for="#item<%= v._id %>" class="btn">ยกเลิก</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }) %>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-3 w-full flex flex-col">
+        <h2 class="text-xl text-center">ยอดรวม <%= earn %> บาท</h2>
+        <div class=" mx-auto">
+            <form action="/api/confirmorder/<%=session.user._id%>" method = "POST">
+                <button class="mx-auto btn btn-success text-white mt-3">สั่งอาหาร</button>
+            </form>
+        </div>
+    </div>
+</div>

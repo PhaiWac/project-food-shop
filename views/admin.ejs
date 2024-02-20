@@ -1,0 +1,137 @@
+<div class="w-5/6 mx-auto md:w-4/5">
+    <div class="p-5">
+        <a href="/orders" class="btn btn-warning w-full mb-3">คำสั่งซื้อ</a>
+        <!-- Open the modal using ID.showModal() method -->
+        <button class="btn w-full btn-primary" onclick="additem.showModal()">เพิ่มสินค้า</button>
+        <dialog id="additem" class="modal">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">เพิ่มสินค้า</h3>
+                <form action="/api/addfood" method='post' enctype="multipart/form-data">
+                    <div class="m-3">
+                        <label for="" class="label">ชื่อสินค้า</label>
+                        <input type="text" name="name" id="" class="input input-bordered w-full">
+                    </div>
+                    <div class="m-3">
+                        <label for="" class="label">ราคา</label>
+                        <input type="number" name="price" id="" class="input input-bordered w-full">
+                    </div>
+                    <div class="m-3">
+                        <label for="" class="label">รูปภาพ</label>
+                        <input type="file" name="image" id="" class="file-input file-input-bordered w-full">
+                    </div>
+                    
+                    <div class="model-action m-3">
+                        <div class="dialog">
+                            <button class="btn btn-success text-white w-full">เพิ่มสินค้า</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-action w-full">
+                    <form method="dialog" class="w-full flex">
+
+                        <button class="btn w-full md:w-auto md:ms-auto">ปิดหน้าต่าง</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+
+        <div class="overflow-x-auto mt-5">
+            <table class="table">
+                <!-- head -->
+                <thead>
+                    <tr>
+                        <th>อาหาร</th>
+                        <th>ชื่ออาหาร</th>
+                        <th>ราคา</th>
+                        <th>แก้ไขข้ออมูล</th>
+                        <th>ลบสินค้า</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- row 1 -->
+                    <% food.forEach(function(v) { %>
+                        <tr>
+
+                            <td>
+                                <div class="avatar">
+                                    <div class="mask mask-squircle w-12 h-12">
+                                        <img src="./img/<%= v.image %>" alt="">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h2>
+                                    <%= v.name %>
+                                </h2>
+                            </td>
+                            <td>
+                                <h2>
+                                    <%= v.price %>
+                                </h2>
+                            </td>
+                            <td>
+                                <label for="#edit<%= v._id %>" class="btn btn-primary text-white">แก้ไขสินค้า</label>
+
+                                <input type="checkbox" id="#edit<%= v._id %>" class="modal-toggle" />
+                                <div class="modal" role="dialog">
+                                    <div class="modal-box">
+                                        <h3 class="font-bold text-lg">แก้ไขข้อมูลของ <%= v.name %></h3>
+                                        
+                                        <form action="/api/editfood/<%=v._id %>" method="POST" enctype="multipart/form-data">
+                                            <div class="m-5">
+                                                <label for="" class="label">ชื่ออาหาร</label>
+                                                <input type="text" name="name"  id="" class="input w-full input-bordered">
+                                            </div>
+                                            <div class="m-5">
+                                                <label for="" class="label">ราคาอาหาร</label>
+                                                <input type="number" name="price"  id="" class="input w-full input-bordered">
+                                            </div>
+                                            <div class="m-5">
+                                                <label for="" class="label">รูปภาพอาหาร</label>
+                                                <input type="file" name="image" id="" class="file-input w-full file-input-bordered">
+                                            </div>
+                                            <div class="m-5">
+                                                <button class="btn w-full btn-warning" >แก้ไข</button>
+                                            </div>
+                                        </form>
+                                        <div class="modal-action">
+                                            <label for="#edit<%= v._id %>" class="btn">Close!</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                             
+                            </td>
+                            <td>
+                                <label for="#model<%= v._id %>" class="btn btn-error text-white">ลบสินค้า</label>
+
+                                <input type="checkbox" id="#model<%= v._id %>" class="modal-toggle" />
+                                <div class="modal" role="dialog">
+                                    <div class="modal-box">
+                                        <h3 class="font-bold text-lg">ยืนยันการลบ</h3>
+                                        <form action="/api/deletefood/<%= v._id %>?_method=DELETE" method="POST">
+                                            <button type="submit" class="btn btn-primary w-full text-black hover:text-white">ยืนยัน</button>    
+                                        </form>
+                                        <div class="modal-action">
+                                        <label for="#model<%= v._id %>" class="btn">Close!</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               
+                            </td>
+                        </tr>
+                        <% }) %>
+
+
+                </tbody>
+                <!-- foot -->
+
+
+            </table>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,57 @@
+<div class="w-5/6 mx-auto md:w-4/5">
+
+    <div class="w-full rounded-md bg-black relative">
+        <img src="/img/foodbg.png" class="rounded-md w-full h-[25vh] object-cover  md:h-[50vh] opacity-75" alt="">
+        <div class="md:absolute mt-2  md:inset-y-1/3 w-full flex justify-center">
+            <div class="text-white flex-col max-w-lg text-center">
+                <h1 class="font-bold text-5xl">Welcome to foodshop</h1>
+                <p>ยินดีต้อนรับสู่ร้านอาหาร ร้านอาหารนี้เต็มไปด้วยอาหารเมนูหลากหลายรูปแบบ ท่านสามารถเลือกชมได้ตามใจชอบเลย</p>
+                <a href="" class="btn m-3 btn-primary">เลือกสินค้า</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full rounded-md  mt-5 mb-5">
+        <h1 class="text-2xl font-bold text-center">เลือกซื้อสินค้า</h1>
+
+        <div class="flex flex-wrap justify-center md:justify-start md:gap-3">
+            <% foods.forEach((v) => {  %>
+                <div class="card w-48 bg-base-100 rounded-lg shadow-xl m-2 md:w-[18rem]">
+                    <figure><img src="img/<%=v.image %>"  class=" w-full object-cover" /></figure>
+                    <div class="card-body">
+                        <h2 class="card-title"><%= v.name %></h2>
+                        <h4>ราคา <%= v.price %></h4>
+
+                        <div class="card-actions justify-end">
+
+                            <label for="item<%=v._id%>" class="btn">สั่งซื้อ</label>
+                            <input type="checkbox" id="item<%=v._id%>" class="modal-toggle" />
+                            <div class="modal" role="dialog">
+                                <div class="modal-box">
+                                    <h3 class="font-bold text-lg">เลือกจำนวนอาหาร</h3>
+                                    <form action="/api/buyorder/<%=v._id %>" method = "POST">
+                                        <div class="m-3">
+                                            <input type="text" name="count" id="" class="input input-bordered w-full">
+                                        </div>
+                                        <div class="m-3">
+                                            <button class="btn btn-primary w-full">ยืนยันการสั่งซื้อ</button>
+                                        </div>
+                                    </form>
+                                    <div class="modal-action">
+                                        <label for="item<%=v._id%>" class="btn">ปิดหน้าต่าง</label>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                        </div>
+                    </div>
+                </div>
+                
+            <% }) %>
+        </div>
+
+  
+
+
+    </div>
+</div>
